@@ -1,18 +1,39 @@
-# Salesforce DX Project: Next Steps
+# Natixis Tech Challenge - João Lopes
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Objective: create a Lighning web component to visualize the products.
+-all data must be fetched from https://dummyjson.com/
+-data must be retrieved and stored in SalesForce
+-must be retrieved with authentication methods available on the API documentation: https://dummyjson.com/docs
+-component must provide a way to consume from API and refresh records in realtime
+-component must have a way to filter by name, categories, brand etc...
+-component must show product pictures (at least 1 thumbnail)
+-component must show the sum of all products in stock showing on the screen.
+-business requirement	
+each category can have a maximum of 100 products or the total sum of unitary price under $10k, without considering the amount of products in stock
+Delivery: Package ready do deploy to a sandbox so we can test it.
 
-## How Do You Plan to Deploy Your Changes?
+# Pre-Deploy Steps
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Add image host domain in order to load product thumbnails:
 
-## Configure Your Salesforce DX Project
+Go to: Setup -> Trusted URLs -> New Trusted URL
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+API Name: NAT_ProductImages
+URL: https://cdn.dummyjson.com
+Active: true
 
-## Read All About It
+CSP Context: All
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+CSP Directions: check img-src (images)
+
+Save the record
+
+
+# Deploy
+
+Project items listed on package.xml
+
+# Notes
+
+Project uses the Product2 standard object. All other items are included.
+Apex tested with 100 code coverage. 
