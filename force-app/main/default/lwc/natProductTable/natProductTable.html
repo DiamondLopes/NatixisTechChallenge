@@ -36,6 +36,9 @@
           <!-- Product Cards -->
           <lightning-layout multiple-rows>
             <template if:true={currentPageProducts}>
+              <lightning-layout-item size="12" padding="around-small">
+                <span class="slds-text-body_small">Product Stock in page {currentPage}: {pageStockTotal} of {stockTotal}</span>
+              </lightning-layout-item>
               <template for:each={currentPageProducts} for:item="prod">
                 <lightning-layout-item key={prod.Id} size="3" padding="around-small">
                   <c-nat-product-card product={prod}></c-nat-product-card>

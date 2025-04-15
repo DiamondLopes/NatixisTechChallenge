@@ -12,6 +12,8 @@ export default class NatProductVisualizer extends LightningElement {
   currentPageProducts = []; 
   currentPage = 1; 
   productsPerPage = 12; 
+  pageStockTotal = 0;
+  stockTotal = 0;
   isLoading = true;
   hasProducts = false;
 
@@ -45,6 +47,7 @@ export default class NatProductVisualizer extends LightningElement {
         this.products = result; 
         this.updateFilterOptions();
         this.updatePageProducts();
+        this.calcStockValues();
         this.currentPage = 1;
         this.isLoading = false;
       }).catch((error) => {
@@ -113,15 +116,28 @@ export default class NatProductVisualizer extends LightningElement {
     });
   }
 
-  resetFilters() {
-    const startSelect = this.template.querySelector('.start-select');
-    if (startSelect) {
-        startSelect.value = 'inProgress';
-    }
-}
+ /*
+   * Stock
+   */
+
+ calcStockValues(){
+  this.stockTotal = 0;
+  this.pageStockTotal = 0;
+  if(this.products){
+    this.products.map((product) => {
+      this.stockTotal += product.NAT_Stock__c;
+    })
+  }
+  if(this.currentPageProducts){
+    this.currentPageProducts.map((product) => {
+      this.pageStockTotal += product.NAT_Stock__c;
+    })
+  }
+ }
+
 
   /*
-   *Pagination controls
+   * Pagination controls
    */
 
    
@@ -142,6 +158,7 @@ export default class NatProductVisualizer extends LightningElement {
     const startIndex = (this.currentPage - 1) * this.productsPerPage;
     const endIndex = startIndex + this.productsPerPage;
     this.currentPageProducts = this.filteredProducts.slice(startIndex, endIndex);
+    this.calcStockValues();
   }
 
   // Handle name filter change
