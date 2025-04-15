@@ -37,7 +37,10 @@
           <lightning-layout multiple-rows>
             <template if:true={currentPageProducts}>
               <lightning-layout-item size="12" padding="around-small">
-                <span class="slds-text-body_small">Product Stock in page {currentPage}: {pageStockTotal} of {stockTotal}</span>
+                <span class="slds-text-body_small">Product Stock in Page {currentPage}: {pageStockTotal} of {stockTotal}</span>
+              </lightning-layout-item>
+              <lightning-layout-item size="12" padding="around-small">
+                <span class="slds-text-body_small">Products Available in Stock in Page {currentPage}: {pageInStockTotal} of {inStockTotal}</span>
               </lightning-layout-item>
               <template for:each={currentPageProducts} for:item="prod">
                 <lightning-layout-item key={prod.Id} size="3" padding="around-small">

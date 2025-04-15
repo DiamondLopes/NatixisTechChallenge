@@ -14,6 +14,8 @@ export default class NatProductVisualizer extends LightningElement {
   productsPerPage = 12; 
   pageStockTotal = 0;
   stockTotal = 0;
+  pageInStockTotal = 0;
+  inStockTotal = 0;
   isLoading = true;
   hasProducts = false;
 
@@ -123,14 +125,22 @@ export default class NatProductVisualizer extends LightningElement {
  calcStockValues(){
   this.stockTotal = 0;
   this.pageStockTotal = 0;
+  this.inStockTotal = 0;
+  this.pageInStockTotal = 0;
   if(this.products){
     this.products.map((product) => {
       this.stockTotal += product.NAT_Stock__c;
+      if(product.NAT_Stock__c > 0){
+        this.inStockTotal++;
+      }
     })
   }
   if(this.currentPageProducts){
     this.currentPageProducts.map((product) => {
       this.pageStockTotal += product.NAT_Stock__c;
+      if(product.NAT_Stock__c > 0){
+        this.pageInStockTotal++;
+      }
     })
   }
  }
