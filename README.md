@@ -56,4 +56,4 @@ Project items listed on package.xml
 
 
 Project uses the Product2 standard object. All other items are included.
-Apex tested with 100 code coverage. 
+Apex tested with 100% code coverage. 
