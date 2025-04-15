@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <!-- Apex Classes -->
+        <members>NAT_ProductAPI</members>
+        <members>NAT_ProductAPITest</members>
+        <members>NAT_ProductSyncController</members>
+        <members>NAT_ProductSyncControllerTest</members>
+        <members>NAT_ProductSyncHelper</members>
+        <members>NAT_ProductSyncHelperTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <!-- Lightning Web Components -->
+        <members>natProductTable</members>
+        <members>natProductCard</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <!-- Custom Metadata -->
+        <members>DataAPI__mdt</members>
+        <name>CustomMetadata</name>
+    </types>
+    <types>
+        <!-- Custom Fields -->
+        <members>Product2.NAT_Category__c</members>
+        <members>Product2.NAT_Brand__c</members>
+        <members>Product2.NAT_Price__c</members>
+        <members>Product2.NAT_Stock__c</members>
+        <members>Product2.NAT_ExternalID__c</members>
+        <members>Product2.NAT_ThumbnailURL__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <!-- Permission Set -->
+        <members>NAT_ProductTableUser</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <!-- Security -->
+        <members>NAT_Products</members>
+        <name>RemoteSiteSetting</name>
+    </types>
+    <version>63.0</version>
+</Package>

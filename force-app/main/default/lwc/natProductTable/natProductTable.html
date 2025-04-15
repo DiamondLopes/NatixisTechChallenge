@@ -1,0 +1,67 @@
+<template>
+  <lightning-card title="Product Table" icon-name="standard:product">
+    <div class="slds-p-around_medium">
+
+      <!-- Refresh Data Button  -->
+      <lightning-button label="Refresh Product Data" onclick={refreshProductData} variant="brand"
+        class="slds-m-bottom_medium"></lightning-button>
+
+      <!-- Filters -->
+      <lightning-layout>
+        <lightning-layout-item size="6" padding="around-small">
+          <lightning-input label="Name" value={nameFilter} onchange={handleNameFilterChange}
+            class="slds-m-bottom_medium"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="3" padding="around-small">
+          <lightning-combobox label="Category" value={categoryFilter} options={categoryOptions}
+            onchange={handleCategoryFilterChange} class="slds-m-bottom_medium"></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="3" padding="around-small">
+          <lightning-combobox label="Brand" value={brandFilter} options={brandOptions}
+            onchange={handleBrandFilterChange} class="slds-m-bottom_medium"></lightning-combobox>
+        </lightning-layout-item>
+      </lightning-layout>
+
+      <!-- Product List -->
+      <template if:false={isLoading}>
+
+        <template if:false={foundProducts}>
+          <div class="slds-m-top_medium">
+            <span class="slds-text-body_small">No Products found</span>
+          </div>
+        </template>
+
+        <template if:true={foundProducts}>
+
+          <!-- Product Cards -->
+          <lightning-layout multiple-rows>
+            <template if:true={currentPageProducts}>
+              <template for:each={currentPageProducts} for:item="prod">
+                <lightning-layout-item key={prod.Id} size="3" padding="around-small">
+                  <c-nat-product-card product={prod}></c-nat-product-card>
+                </lightning-layout-item>
+              </template>
+            </template>
+          </lightning-layout>
+
+          <!-- Pagination Controls -->
+          <div class="slds-m-top_medium">
+            <lightning-button-icon icon-name="utility:chevronleft" alternative-text="Previous" onclick={handlePrevious}
+              disabled={isFirstPage} class="slds-m-right_small"></lightning-button-icon>
+            <span class="slds-text-body_small">Page {currentPage} of {totalPages}</span>
+            <lightning-button-icon icon-name="utility:chevronright" alternative-text="Next" onclick={handleNext}
+              disabled={isLastPage} class="slds-m-left_small"></lightning-button-icon>
+          </div>
+
+        </template>
+
+      </template>
+      <template if:true={isLoading}>
+        <div class="slds-m-top_medium">
+          <span class="slds-text-body_small">Loading...</span>
+        </div>
+      </template>
+
+    </div>
+  </lightning-card>
+</template>

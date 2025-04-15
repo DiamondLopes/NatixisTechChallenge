@@ -1,0 +1,11 @@
+.card {
+  border-radius: 0.5rem;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+}
